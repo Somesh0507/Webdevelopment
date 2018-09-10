@@ -1,0 +1,74 @@
+function randomcolor() {
+
+var code = '123456789ABCDEF'.split('');
+
+var color = '#';
+  for (var i = 0; i < 6; i++) {
+
+color += code[Math.round(Math.random() * 15)];
+
+
+}
+  return color;
+}
+var createdtime;
+
+var clickedTime;
+
+var reactionTime;
+
+function makeBox() {
+
+var x = Math.random();
+  x = 5000 * x;
+
+setTimeout(function () {
+    if (Math.random() > 0.5) {
+
+
+document.getElementById('box').style.borderRadius = '200px';
+
+} else {
+
+document.getElementById('box').style.borderRadius = '20px';
+
+};
+
+var top = Math.random();
+
+top = top * 300;
+
+var left = Math.random();
+
+left = 200 * left;
+
+document.getElementById('box').style.top = top + 'px';
+
+document.getElementById('box').style.left = top + 'px';
+
+document.getElementById('box').style.backgroundColor = randomcolor();
+
+document.getElementById('box').style.display = 'block';
+
+createdtime = Date.now();
+  }, x);
+
+}
+
+document.getElementById('box').onclick = function () {
+
+clickedTime = Date.now();
+
+reactionTime = (clickedTime - createdtime) / 1000;
+
+
+document.getElementById('text').innerHTML = reactionTime;
+
+this.style.display = 'none';
+
+makeBox();
+
+};
+
+
+makeBox();
